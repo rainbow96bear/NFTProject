@@ -1,23 +1,22 @@
 import styled from "styled-components";
+import { BiSun, BiMoon } from "react-icons/bi";
+import { useEffect } from "react";
 type Props = {
-  screenThema: string;
+  thema: string;
   chageThema: () => void;
 };
-const HeaderComp: React.FC<Props> = ({ screenThema, chageThema }) => {
+const HeaderComp: React.FC<Props> = ({ thema, chageThema }) => {
   return (
-    <HeaderArea color={screenThema}>
-      <button
+    <HeaderArea>
+      <div
         onClick={() => {
           chageThema();
         }}>
-        {screenThema == "dark" ? "라이트 모드" : "다크 모드"}
-      </button>
+        {thema == "dark" ? <BiMoon></BiMoon> : <BiSun></BiSun>}
+      </div>
     </HeaderArea>
   );
 };
 
 export default HeaderComp;
-const HeaderArea = styled.div<{ color: string }>`
-  background-color: ${(props) =>
-    props.color == "dark" ? "lightgray" : "lightblue"};
-`;
+const HeaderArea = styled.div``;
