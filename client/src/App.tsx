@@ -20,7 +20,7 @@ function App() {
   };
   useEffect(() => {
     getTheme();
-  }, [themeR]);
+  }, []);
 
   return (
     <div>

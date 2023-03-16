@@ -26,7 +26,7 @@ const themeChangeSlice = createSlice({
   extraReducers: (builder) => {
     // builder.addCase(changeThunk.pending, (state, action) => {});
     builder.addCase(changeThunk.fulfilled, (state, action) => {
-      state.type = action.payload.toString();
+      state.type = action.payload;
     });
   },
 });
