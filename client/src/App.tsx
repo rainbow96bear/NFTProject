@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import { action } from "./store/thema";
 import { lightTheme, darkTheme, Theme } from "./styles/theme";
 import GlobalStyle from "./styles/globalStyles";
+import SignCont from "./component/base/Sign/Container";
 interface GetTheme {
   data: any;
 }
@@ -27,7 +28,8 @@ function App() {
       <GlobalStyle
         theme={themeR == "dark" ? darkTheme : lightTheme}></GlobalStyle>
       <Routes>
-        <Route path="/" element={<BaseIndex></BaseIndex>}></Route>
+        <Route path="/*" element={<BaseIndex></BaseIndex>}></Route>
+        <Route path="/SignIn" element={<SignCont></SignCont>}></Route>
         {/* <Route path="/admin" element={}></Route> */}
       </Routes>
     </div>
