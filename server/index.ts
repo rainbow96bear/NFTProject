@@ -1,21 +1,21 @@
-const express = require("express");
-const session = require("express-session");
-const path = require("path");
-const dotenv = require("dotenv");
-const morgan = require("morgan");
-const cookieParser = require("cookie-parser");
-const cors = require("cors");
+import express, { Express, Request, Response, NextFunction } from "express";
+import session from "express-session";
+import path from "path";
+import dotenv from "dotenv";
+import morgan from "morgan";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 
 dotenv.config();
 
-const app = express();
+const app: Express = express();
 app.use(cors({ origin: true, credentials: true }));
 app.set("port", process.env.PORT || 8080);
 app.use("/", express.static(path.join(__dirname, "build")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
   if (process.env.NODE_ENV == "production") {
     morgan("combined")(req, res, next);
   } else {
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 });
 app.get("/theme", (req, res) => {
   console.log(req.cookies.theme);
-  let theme;
+  let theme: string;
   if (req.cookies.theme) {
     theme = req.cookies.theme;
   } else {
@@ -34,7 +34,6 @@ app.get("/theme", (req, res) => {
     expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
   });
   res.send({ theme });
-  // res.end();
 });
 
 app.get("/change/theme", (req, res) => {
@@ -57,7 +56,7 @@ app.use(
       httpOnly: true,
       secure: false,
     },
-    secret: process.env.COOKIE_SECRET,
+    secret: String(process.env.COOKIE_SECRET),
     name: "session",
   })
 );
