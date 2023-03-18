@@ -37,3 +37,14 @@
 #### 오류 수정
 
 - 카카오 로그인 구현 시 window.Kakao의 type에 대한 설정 오류가 있어 react-app-env.d.ts파일에 global로 Kakao의 type을 any로 설정하여 오류를 잡아둠 - 추후에 type을 알아내면 수정할 계획
+
+### 03/18
+
+- 메인 화면을 반응형으로 구현하여 desktop 크기의 화면에서 사이드바, tablet 혹은 mobile의 경우 header가 뜨도록 구현
+  - header의 경우 추후에 자세히 구현
+- js로 생성한 express server를 ts로 변경
+
+#### 오류 수정
+
+- 사이드바에서 pramas 설정에 의하여 홈의 경우 경로를 인식하지 못하는 오류
+  - 해결방안 : home은 router를 따로 설정하여서 해결
