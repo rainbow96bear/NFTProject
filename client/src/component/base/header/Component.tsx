@@ -1,25 +1,11 @@
 import styled from "styled-components";
-import { BiSun, BiMoon } from "react-icons/bi";
-import { useEffect } from "react";
 import { MoveTo } from "../../../customComp/MoveTo";
+import ThemeBtn from "../../../customComp/ThemeBtn";
 
-type Props = {
-  thema: string;
-  chageThema: () => void;
-};
-const HeaderComp: React.FC<Props> = ({ thema, chageThema }) => {
+const HeaderComp = () => {
   return (
     <HeaderArea>
-      <BtnFrame
-        onClick={() => {
-          chageThema();
-        }}>
-        {thema == "dark" ? (
-          <BiMoon size="24"></BiMoon>
-        ) : (
-          <BiSun size="24"></BiSun>
-        )}
-      </BtnFrame>
+      <ThemeBtn size={"24"}></ThemeBtn>
       <BtnFrame>
         <MoveTo where={"/SignIn"} InnerText={"Sign In"} />
       </BtnFrame>

@@ -14,7 +14,7 @@ interface GetTheme {
 }
 function App() {
   const dispatch = useDispatch<any>();
-  const themeR = useSelector((state: any) => state.thema.type);
+  const theme = useSelector((state: any) => state.thema.type);
   const getTheme = async () => {
     const data = (await axios.get("http://localhost:8080/theme")).data;
     dispatch(action.setting({ type: data.theme }));
@@ -26,9 +26,10 @@ function App() {
   return (
     <div>
       <GlobalStyle
-        theme={themeR == "dark" ? darkTheme : lightTheme}></GlobalStyle>
+        theme={theme == "dark" ? darkTheme : lightTheme}></GlobalStyle>
       <Routes>
-        <Route path="/*" element={<BaseIndex></BaseIndex>}></Route>
+        <Route path="/" element={<BaseIndex></BaseIndex>}></Route>
+        <Route path="/:params" element={<BaseIndex></BaseIndex>}></Route>
         <Route path="/SignIn" element={<SignCont></SignCont>}></Route>
         {/* <Route path="/admin" element={}></Route> */}
       </Routes>
