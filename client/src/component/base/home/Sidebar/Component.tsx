@@ -80,6 +80,9 @@ export default SideBarComp;
 const SideBarArea = styled.div`
   width: 50%;
   max-width: 300px;
+  height: 100vh;
+  border-right: 1px solid #5a5a5a;
+  padding: 20px;
 `;
 const SideItem = styled.div`
   border-radius: 10px;
